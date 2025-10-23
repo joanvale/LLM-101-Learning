@@ -1,0 +1,18 @@
+# Core FastAPI dependencies
+fastapi
+uvicorn[standard]
+
+# CORS middleware
+python-multipart
+aiofiles
+starlette
+
+# Utility
+python-dotenv
+pydantic
+
+# Optional: if using database
+sqlalchemy
+
+# Optional: logging
+loguru
