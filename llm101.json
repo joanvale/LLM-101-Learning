@@ -1,0 +1,412 @@
+{
+  "lab": {
+    "title": "LLM 101 Learning",
+    "slug": "joan-004",
+    "description": "Explore foundational LLM capabilities including text generation, translation, summarization, sentiment analysis, and chatbot interactions.",
+    "content": "Hands-on interaction with NLP services state-of-the-art language models. Try it out and test your understanding through quizzes.",
+    "type": "basic",
+    "template": "standard",
+    "api_url": "http://3.86.167.22:8002",
+    "points": 20
+  },
+  "contents": [
+    {
+      "content": "<video controls src=''></video>",
+      "type": "video",
+      "content_id": 1,
+      "slug": "joan-004_1",  
+      "page": 1,
+      "order": 1,
+      "title": "Tutorial",
+      "progress": 20,
+      "depends_on_finish_lab": false
+    },
+    {
+      "content": "<h2>Introduction to Machine Learning</h2><p>Large Language Models (LLMs) represent a breakthrough in artificial intelligence, employing neural network techniques with extensive parameters for advanced language processing.</p><p>In this lab, you will explores the evolution, architecture, applications, and challenges of LLMs, focusing on their impact in the field of Natural Language Processing (NLP).</p><h2>What You Will Learn</h2><ul><li><li>What are Large Language Models(LLMs)</li><li>How do Large Language Models work?</li><li>Architecture of LLM</li><li>Popular Large Language Models</li><li>Applications of Large Language Models</li><li>What are the Advantages of Large Language Models?</li><li>Challenges in Training of Large Language Models</li><li>Hands-on Coding Exercises</li></ul><h2>What are Large Language Models(LLMs)</h2><p>A large language model is a type of artificial intelligence algorithm that applies neural network techniques with lots of parameters to process and understand human languages or text using self-supervised learning techniques. Tasks like text generation, machine translation, summary writing, image generation from texts, machine coding, chat-bots, or Conversational AI are applications of the Large Language Model.</p><p>There are many techniques that were tried to perform natural language-related tasks but the LLM is purely based on the deep learning methodologies. LLM (Large language model) models are highly efficient in capturing the complex entity relationships in the text at hand and can generate the text using the semantic and syntactic of that particular language in which we wish to do so.</p><p>If we talk about the size of the advancements in the <b>GPT (Generative Pre-trained Transformer)</b> model only then:</p><ul><li>GPT-1 which was released in 2018 contains 117 million parameters having 985 million words.</li><li>GPT-2 which was released in 2019 contains 1.5 billion parameters.</li><li>GPT-3 which was released in 2020 contains 175 billion parameters. Chat GPT is also based on this model as well.</li><li>GPT-4 model is released in the early 2023 and it is likely to contain trillions of parameters.</li><li>GPT-4 Turbo was introduced in late 2023, optimized for speed and cost-efficiency, but its parameter count remains unspecified.</li><li>GPT-4.5, released in early 2024, served as a bridge between GPT-4 and GPT-5. It brought faster response times, better reliability, and more consistent reasoning. Though not a full architectural overhaul, it represented optimizations in performance and instruction-following capabilities, especially within the ChatGPT experience.</li><li>GPT-4o ('o' for 'omni') model released in May 2024 is considered the most advanced to date. GPT-4o is a multimodal model capable of processing and generating text, images and audio including real-time speech input and output. It offers near-instantaneous response times, reduced latency and better memory. GPT-4o also represents a unification of modalities within a single neural network architecture, making it the first fully integrated model across media types.</li></ul>",
+      "type": "narrative",
+      "content_id": 2,
+      "slug": "joan-004_2",
+      "page": 2,
+      "order": 1,
+      "title": "Introduction",
+      "progress": 30,
+      "depends_on_finish_lab": false
+    },
+    {
+      "content": "<h2>How do Large Language Models work?</h2><p>Large Language Models (LLMs) operate on the principles of deep learning, leveraging neural network architectures to process and understand human languages.These models, are trained on vast datasets using self-supervised learning techniques. The core of their functionality lies in the intricate patterns and relationships they learn from diverse language data during training. LLMs consist of multiple layers, including feedforward layers, embedding layers, and attention layers. They employ attention mechanisms, like self-attention, to weigh the importance of different tokens in a sequence, allowing the model to capture dependencies and relationships.</p><h2>Architecture of LLM</h2><p>Large Language Model’s (LLM) architecture is determined by a number of factors, like the objective of the specific model design, the available computational resources, and the kind of language processing tasks that are to be carried out by the LLM. The general architecture of LLM consists of many layers such as the feed forward layers, embedding layers, attention layers. A text which is embedded inside is collaborated together to generate predictions.</p><ul><p>Important components to influence Large Language Model architecture:</p><ul><li>Model Size and Parameter Count</li><li>Input representations</li><li>Self-Attention Mechanisms</li><li>Training Objectives</li><li>Computational Efficiency</li><li>Decoding and Output Generation</li></ul><h4>Transformer-Based LLM Model Architectures</h4><p><b>Transformer-based models</b>, which have revolutionized natural language processing tasks, typically follow a general architecture that includes the following components:</p><div class='center'><img src='https://media.geeksforgeeks.org/wp-content/uploads/20230531140926/Transformer-python-(1).png'/></div><ul><li><b>Input Embeddings:</b> The input text is tokenized into smaller units, such as words or sub-words, and each token is embedded into a continuous vector representation. This embedding step captures the semantic and syntactic information of the input.</li><li><b>Positional Encoding:</b> Positional encoding is added to the input embeddings to provide information about the positions of the tokens because transformers do not naturally encode the order of the tokens. This enables the model to process the tokens while taking their sequential order into account.</li><li><b>Encoder:</b> Based on a neural network technique, the encoder analyses the input text and creates a number of hidden states that protect the context and meaning of text data. Multiple encoder layers make up the core of the transformer architecture. Self-attention mechanism and feed-forward neural network are the two fundamental sub-components of each encoder layer.</li><ul><p>1. <b>Self-Attention Mechanism:</b> Self-attention enables the model to weigh the importance of different tokens in the input sequence by computing attention scores. It allows the model to consider the dependencies and relationships between different tokens in a context-aware manner.</p><p>2. <b>Feed-Forward Neural Network:</b> After the self-attention step, a feed-forward neural network is applied to each token independently. This network includes fully connected layers with non-linear activation functions, allowing the model to capture complex interactions between tokens.</p></ul><li><b>Decoder Layers: </b>  In some transformer-based models, a decoder component is included in addition to the encoder. The decoder layers enable autoregressive generation, where the model can generate sequential outputs by attending to the previously generated tokens.</li><li><b>Multi-Head Attention:</b> Transformers often employ multi-head attention, where self-attention is performed simultaneously with different learned attention weights. This allows the model to capture different types of relationships and attend to various parts of the input sequence simultaneously.</li><li><b>Layer Normalization:</b> Layer normalization is applied after each sub-component or layer in the transformer architecture. It helps stabilize the learning process and improves the model’s ability to generalize across different inputs.</li><li><b>Output Layers: </b> The output layers of the transformer model can vary depending on the specific task. For example, in language modeling, a linear projection followed by SoftMax activation is commonly used to generate the probability distribution over the next token.</li></ul><p>It’s important to keep in mind that the actual architecture of transformer-based models can change and be enhanced based on particular research and model creations. To fulfill different tasks and objectives, several models like GPT, BERT, and T5 may integrate more components or modifications.</p></ul><h2>Popular Large Language Models</h2><p>Now let’s look at some of the famous LLMs which has been developed and are up for inference.</p><ul><li><b>GPT-3:</b> GPT 3 is developed by OpenAI, stands for Generative Pre-trained Transformer 3. This model powers ChatGPT and is widely recognized for its ability to generate human-like text across a variety of applications.</li><li><b>BERT:</b> It is created by Google, is commonly used for natural language processing tasks and generating text embeddings, which can also be utilized for training other models.</li><li><b>RoBERTa:</b> RoBERTa is an advanced version of BERT, stands for Robustly Optimized BERT Pretraining Approach. Developed by Facebook AI Research, it enhances the performance of the transformer architecture.</li><li><b>BLOOM:</b> It is the first multilingual LLM, designed collaboratively by multiple organizations and researchers. It follows an architecture similar to GPT-3, enabling diverse language-based tasks.</li></ul><p>For implementation details, these models are available on open-source platforms like Hugging Face and OpenAI for Python-based applications.</p><h2>What are the Advantages of Large Language Models?</h2><p>Large Language Models (LLMs) come with several advantages that contribute to their widespread adoption and success in various applications:</p><ul><li>LLMs can perform zero-shot learning, meaning they can generalize to tasks for which they were not explicitly trained. This capability allows for adaptability to new applications and scenarios without additional training.</li><li>LLMs efficiently handle vast amounts of data, making them suitable for tasks that require a deep understanding of extensive text corpora, such as language translation and document summarization.</li><li>LLMs efficiently handle vast amounts of data, making them suitable for tasks that require a deep understanding of extensive text corpora, such as language translation and document summarization.</li><li>LLMs enable the automation of various language-related tasks, from code generation to content creation, freeing up human resources for more strategic and complex aspects of a project.</li></ul><h2>Challenges in Training of Large Language Models</h2><ul><li><b>High Costs: </b> Training LLMs requires significant financial investment, with millions of dollars needed for large-scale computational power.</li><li><b>Time-Intensive: </b> Training takes months, often involving human intervention for fine-tuning to achieve optimal performance.</li><li><b>Data Challenges:</b> Obtaining large text datasets is difficult, and concerns about the legality of data scraping for commercial purposes have arisen.</li><li><b>Environmental Impact: </b> Training a single LLM from scratch can produce carbon emissions equivalent to the lifetime emissions of five cars, raising serious environmental concerns.</li></ul>",      
+      "type": "narrative",
+      "content_id": 3,
+      "slug": "joan-004_3",
+      "page": 3,
+      "order": 1,
+      "title": "How Large Language Models Works",
+      "progress": 40,
+      "depends_on_finish_lab": false
+    },
+    {
+      "content": "",
+      "type": "chatbot",
+      "content_id": 4,
+      "slug": "joan-004_4",  
+      "page": 4,
+      "order": 1,
+      "title": "Chatbot",
+      "progress": 60,
+      "depends_on_finish_lab": false
+    },
+    {
+      "content": "",
+      "type": "text-generation",
+      "content_id": 5,
+      "slug": "joan-004_5",  
+      "page": 5,
+      "order": 1,
+      "title": "Content Generator",
+      "progress": 70,
+      "depends_on_finish_lab": false
+    },
+    {
+      "content": "",
+      "type": "translation",
+      "content_id": 6,
+      "slug": "joan-004_6",  
+      "page": 6,
+      "order": 1,
+      "title": "Translator",
+      "progress": 70,
+      "depends_on_finish_lab": false
+    },
+     {
+      "content": "",
+      "type": "summarization",
+      "content_id": 7,
+      "slug": "joan-004_7",  
+      "page": 7,
+      "order": 1,
+      "title": "Summarizer",
+      "progress": 80,
+      "depends_on_finish_lab": false
+    },
+     {
+      "content": "",
+      "type": "sentiment-analysis",
+      "content_id": 8,
+      "slug": "joan-004_8",  
+      "page": 8,
+      "order": 1,
+      "title": "Sentiment Analyzer",
+      "progress": 90,
+      "depends_on_finish_lab": false
+    },
+    {
+      "content": "<h2>Step-by-Step Process of LLM Simulation</h2><p>Below is a step-by-step breakdown of how LLMs work, with simple Python code for each step. We'll go through:</p><ul><p><b>1. Data Collection and Preprocessing</b></p><p>Before training an LLM, we need a large dataset of text. Here’s how we load and preprocess text:</p><p><bb>Example</b></p><div class='code' ># Sample dataset: A small text corpus\ndataset = [\n\n\t'Artificial Intelligence is transforming the world.',\n\n\t'Large Language Models understand and generate text.',\n\n\t'Deep learning enables LLMs to capture semantic meaning.',\n\n]\n\n# Preprocessing: Convert text to lowercase\nprocessed_dataset = [sentence.lower() for sentence in dataset]\n\nprint('Processed Data:', processed_dataset)</div><p><b>Tokenization (Splitting Text into Words)</b></p><p>Tokenization breaks the text into smaller units (tokens). We’ll use the Hugging Face tokenizer for this:</p><p><b>Example</b></p><div class='code'>from transformers import AutoTokenizer\n\n# Load a tokenizer (using GPT-2's tokenizer)\ntokenizer = AutoTokenizer.from_pretrained('gpt2')\n\n# Tokenize a sample sentence\nsentence = 'LLMs are powerful AI models!'\n\ntokens = tokenizer.tokenize(sentence)\n\nprint('Tokens:', tokens)</div><p><b>Embedding (Converting Tokens into Vectors)</b></p><p>Transformers convert tokens into numerical representations (embeddings) for processing.</p><p><b>Example</b></p><div class='code'>import torch\n\n# Convert tokens to IDs\ntoken_ids = tokenizer.encode(sentence, return_tensors='pt')\n\n# Print token IDs\nprint('Token IDs:', token_ids)</div><p><b>Training Simulation (Using a Pretrained LLM)</b></p><p>We simulate training by loading a pre-trained model (GPT-2) and fine-tuning it.</p> <p><b>Example</b></p><div class='code'>from transformers import AutoModelForCausalLM\n\n# Load a pre-trained model (GPT-2)\nmodel = AutoModelForCausalLM.from_pretrained('gpt2')\n\n# Forward pass: Simulating training with tokenized text\noutputs = model(token_ids)\n\n# Print model's output (hidden states)\nprint('Model Output Shape:', outputs.logits.shape)</div><p><b>Inference (Text Generation)</b></p><p>After training, LLMs generate text based on input. Let's make GPT-2 generate text:</p></ul><p><b>Example</b></p><div class='code'># Generate text from a prompt\ninput_text = 'The future of AI is'\ninput_ids = tokenizer.encode(input_text, return_tensors='pt')\n\n# Generate new text\noutput_ids = model.generate(input_ids, max_length=20)\n\n# Decode generated text\ngenerated_text = tokenizer.decode(output_ids[0], skip_special_tokens=True)\nprint('Generated Text:', generated_text)</div><h2> Hands-On Coding Exercise: Working with Large Language Models (LLMs)</h2><p><b>Objectives:</b></p><p>In this exercise, you will:</p><ul> <li>Preprocess a dataset by converting text to lowercase.</li><li>Tokenize a sentence using a Hugging Face tokenizer.</li><li>Convert tokens into numerical representations (IDs).</li><li>Load a pre-trained GPT-2 model and perform text generation.</li></ul><p>To perform the exercise, click the 'Open in Colab'</p><a href='https://colab.research.google.com/drive/1wSav_zJyxqBrLTAFEUqSaV4PUC7ntedY#scrollTo=9_tPUGXVtCuq' target='_blank'><img src='https://colab.research.google.com/assets/colab-badge.svg' alt='Open In Colab'/></a><h2>Conclusion</h2><p>Due to the challenges faced in training LLM transfer learning is promoted heavily to get rid of all of the challenges discussed above. LLM has the capability to bring revolution in the AI-powered application but the advancements in this field seem a bit difficult because just increasing the size of the model may increase its performance but after a particular time a saturation in the performance will come and the challenges to handle these models will be bigger than the performance boost achieved by further increasing the size of the models.</p>",
+      "type": "narrative",
+      "content_id": 9,
+      "slug": "joan-004_9",
+      "page": 9,
+      "order": 1,
+      "title": "LLM Process",
+      "progress": 50,
+      "depends_on_finish_lab": false
+    },
+    {
+      "content": "",
+      "type": "quiz",
+      "content_id": 10,
+      "slug": "joan-004_10",  
+      "page": 10,
+      "order": 1,
+      "title": "Quiz",
+      "progress": 100,
+      "depends_on_finish_lab": false
+    }
+  ],
+  "endpoints": [
+    {
+      "endpoint": "/prompt",
+      "description": "Generate a conversational response using ChatterBot based on the user's message",
+      "type": 0,
+      "method": "POST"
+    },
+    {
+      "endpoint": "/generate-text",
+      "description": "Generate text based on a prompt",
+      "type": 0,
+      "method": "POST"
+    },
+    {
+      "endpoint": "/translate",
+      "description": "Translate the given text to a specified target language",
+      "type": 0,
+      "method": "POST"
+    },
+    {
+      "endpoint": "/summarize",
+      "description": "Generate a summary of the input text",
+      "type": 0,
+      "method": "POST"
+    },
+    {
+      "endpoint": "/analyze",
+      "description": "Perform sentiment analysis on the input text",
+      "type": 0,
+      "method": "POST"
+    }
+  ],
+  "assets": [
+    {
+      "key": "chatbot_greeting_trigger",
+      "value": "hello",
+      "type": "str",
+      "api_endpoint": "/prompt"
+    },
+    {
+      "key": "chatbot_help_trigger",
+      "value": "help",
+      "type": "str",
+      "api_endpoint": "/prompt"
+    },
+    {
+      "key": "generator_model",
+      "value": "gpt2",
+      "type": "str",
+      "api_endpoint": "/generate-text"
+    },
+    {
+      "key": "max_length",
+      "value": "100",
+      "type": "int",
+      "api_endpoint": "/generate-text"
+    },
+    {
+      "key": "num_return_sequences",
+      "value": "1",
+      "type": "int",
+      "api_endpoint": "/generate-text"
+    },
+    {
+      "key": "translator_provider",
+      "value": "GoogleTranslator",
+      "type": "str",
+      "api_endpoint": "/translate"
+    },
+    {
+      "key": "summarizer_model",
+      "value": "facebook/bart-large-cnn",
+      "type": "str",
+      "api_endpoint": "/summarize"
+    },
+    {
+      "key": "summary_max_length",
+      "value": "50",
+      "type": "int",
+      "api_endpoint": "/summarize"
+    },
+    {
+      "key": "summary_min_length",
+      "value": "10",
+      "type": "int",
+      "api_endpoint": "/summarize"
+    },
+    {
+      "key": "do_sample",
+      "value": "false",
+      "type": "boolean",
+      "api_endpoint": "/summarize"
+    },
+    {
+      "key": "sentiment_model",
+      "value": "default (HuggingFace Sentiment Pipeline)",
+      "type": "str",
+      "api_endpoint": "/analyze"
+    },
+    {
+        "key": "API_KEY",
+        "value":"1db6690497cceb60094022fee894b23f81ae30a11c25a7bccf942bcea6628df6",
+        "type": "str",
+        "api_endpoint":""
+    }
+  ],
+  "content_endpoints": [
+    {
+      "content_id": 4,
+      "endpoint": "/prompt"
+    },  
+    {
+      "content_id": 5,
+      "endpoint": "/generate-text"
+    },
+    {
+      "content_id": 6,
+      "endpoint": "/translate"
+    },
+    {
+      "content_id": 7,
+      "endpoint": "/summarize"
+    },
+    {
+      "content_id": 8,
+      "endpoint": "/analyze"
+    }
+  ],
+  "endpoint_user_inputs": [
+    {
+      "endpoint": "/generate-text",
+      "field_name": "prompt",
+      "field_type": "str"
+    },
+    {
+      "endpoint": "/translate",
+      "field_name": "text",
+      "field_type": "str"
+    },
+    {
+      "endpoint": "/translate",
+      "field_name": "target_language",
+      "field_type": "str"
+    },
+    {
+      "endpoint": "/summarize",
+      "field_name": "text",
+      "field_type": "str"
+    },
+    {
+      "endpoint": "/analyze",
+      "field_name": "text",
+      "field_type": "str"
+    },
+    {
+      "endpoint": "/prompt",
+      "field_name": "message",
+      "field_type": "str"
+    }
+  ],
+  "quiz": {
+    "title": "LLM 101 Quiz",
+    "description": "Test your understanding of NLP APIs and LLM concepts.",
+    "pass_percentage": 80,
+    "questions": [
+      {
+        "question_id": 1,
+        "text": "Which of the following are applications of Large Language Models (LLMs). (Select all that apply)",
+        "is_multiple_choice": true,
+        "points": 2,
+        "choices": [
+          {"choice_id": 1, "text": "Text generation", "is_correct": true},
+          {"choice_id": 2, "text": "Machine Translation", "is_correct": true},
+          {"choice_id": 3, "text": "Image Classification", "is_correct": false},
+          {"choice_id": 4, "text": "Reinforcement Learning", "is_correct": false},
+          {"choice_id": 5, "text": "Conversational AI", "is_correct": true}
+        ]
+      },
+      {
+        "question_id": 2,
+        "text": "What are the key components of transformer-based Large Language Models? (Select all that apply)",
+        "is_multiple_choice": true,
+        "points": 2,
+        "choices": [
+          {"choice_id": 6, "text": "Input Embeddings", "is_correct": true},
+          {"choice_id": 7, "text": "Self-Attention Mechanism", "is_correct": true},
+          {"choice_id": 8, "text": "Recurrent Neural Networks (RNN)", "is_correct": false},
+          {"choice_id": 9, "text": "Multi-Head Attention", "is_correct": true}
+        ]
+      },
+      {
+        "question_id": 3,
+        "text": "Which of the following Large Language Models have been developed for natural language processing tasks? (Select all that apply).",
+        "is_multiple_choice": true,
+        "points": 2,
+        "choices": [
+          {"choice_id": 10, "text": "GPT-3", "is_correct": true},
+          {"choice_id": 11, "text": "BERT", "is_correct": true},
+          {"choice_id": 12, "text": "RoBERTa", "is_correct": true},
+          {"choice_id": 13, "text": "ResNet", "is_correct": false}
+        ]
+      },
+      {
+        "question_id": 4,
+        "text": "What factors influence the architecture of a Large Language Model? (Select all that apply).",
+        "is_multiple_choice": true,
+        "points": 2,
+        "choices": [
+          {"choice_id": 14, "text": "Model Size and Parameter Count", "is_correct": true},
+          {"choice_id": 15, "text": "Training Objectives", "is_correct": true},
+          {"choice_id": 16, "text": "Computational Efficiency", "is_correct": true},
+          {"choice_id": 17, "text": "Number of Hidden Layers in Convolutional Networks", "is_correct": false}
+        ]
+      },
+      {
+        "question_id": 5,
+        "text": "What improvements were introduced in later versions of GPT models? (Select all that apply).",
+        "is_multiple_choice": true,
+        "points": 2,
+        "choices": [
+          {"choice_id": 14, "text": "Increase in parameter count", "is_correct": true},
+          {"choice_id": 15, "text": "Optimizations for speed and cost-efficiency", "is_correct": true},
+          {"choice_id": 16, "text": "Shift from self-supervised learning to reinforcement learning", "is_correct": false},
+          {"choice_id": 17, "text": "Enhanced attention mechanisms", "is_correct": true}
+        ]
+      },
+      {
+        "question_id": 6,
+        "text": "Which of the following are applications of Large Language Models (LLMs)?. (Select all that apply).",
+        "is_multiple_choice": true,
+        "points": 2,
+        "choices": [
+          {"choice_id": 18, "text": "Natural Language Understanding (NLU)", "is_correct": true},
+          {"choice_id": 19, "text": "Content Generation", "is_correct": true},
+          {"choice_id": 20, "text": "Language Translation", "is_correct": true},
+          {"choice_id": 21, "text": "Quantum Computing", "is_correct": false}
+        ]
+      },
+      {
+        "question_id": 7,
+        "text": "What are some advantages of Large Language Models (LLMs)?. (Select all that apply).",
+        "is_multiple_choice": true,
+        "points": 2,
+        "choices": [
+          {"choice_id": 22, "text": "Ability to perform zero-shot learning", "is_correct": true},
+          {"choice_id": 23, "text": "Efficient handling of vast amounts of data", "is_correct": true},
+          {"choice_id": 24, "text": "Automation of language-related tasks", "is_correct": true},
+          {"choice_id": 25, "text": "Low computational cost", "is_correct": false}
+        ]
+      },
+      {
+        "question_id": 8,
+        "text": "What are the challenges in training Large Language Models (LLMs)?. (Select all that apply).",
+        "is_multiple_choice": true,
+        "points": 2,
+        "choices": [
+          {"choice_id": 26, "text": "High financial costs for training", "is_correct": true},
+          {"choice_id": 27, "text": "Time-intensive training process", "is_correct": true},
+          {"choice_id": 28, "text": "Environmental impact due to high energy consumption", "is_correct": true},
+          {"choice_id": 29, "text": "LLMs do not require large datasets", "is_correct": false}
+        ]
+      },
+      {
+        "question_id": 9,
+        "text": "What are the key steps in an LLM simulation?. (Select all that apply).",
+        "is_multiple_choice": true,
+        "points": 2,
+        "choices": [
+          {"choice_id": 30, "text": "Data collection and preprocessing", "is_correct": true},
+          {"choice_id": 31, "text": "Tokenization and embedding", "is_correct": true},
+          {"choice_id": 32, "text": "Model training and inference", "is_correct": true},
+          {"choice_id": 33, "text": "Physical hardware manufacturing", "is_correct": false}
+        ]
+      },
+      {
+        "question_id": 10,
+        "text": "In what ways can tokenization be useful in Large Language Models?. (Select all that apply).",
+        "is_multiple_choice": true,
+        "points": 2,
+        "choices": [
+          {"choice_id": 34, "text": "It breaks text into smaller units (tokens) for processing", "is_correct": true},
+          {"choice_id": 35, "text": "It converts words into numerical representations (IDs) for embeddings", "is_correct": true},
+          {"choice_id": 36, "text": "It improves model understanding of text by structuring input data", "is_correct": true},
+          {"choice_id": 37, "text": "It directly generates final output text without further processing", "is_correct": false}
+        ]
+      }
+    ]
+  }
+}

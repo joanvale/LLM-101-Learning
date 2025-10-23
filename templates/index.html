@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LLM 101 Learning</title>
+<link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+<style>
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 350px;
+}
+h1, h2, h3 {
+    color: #333;
+}
+.quiz {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 10px 0;
+}
+.code-block {
+    background-color: #e0e0e0;
+    padding: 10px;
+    margin: 10px 0;
+    white-space: pre-wrap;
+}
+.quiz-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+}
+.question {
+         margin-bottom: 15px;
+}
+.options label {
+            display: block;
+            margin-bottom: 5px;
+}
+.submit-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+}
+.result {
+      margin-top: 15px;
+      font-weight: bold;
+}
+#chatbox {
+    height: 250px;
+    overflow-y: scroll;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: white;
+}
+input, button {
+    padding: 10px;
+    margin-top: 10px;
+}
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+#output { 
+    background-color: #fff; 
+    border: 1px solid #ccc; 
+    padding: 15px; 
+    margin-top: 20px; 
+    min-height: 150px; 
+}
+button { 
+    background-color: #4CAF50; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    cursor: pointer; 
+    width: 100%; 
+    margin-top: 10px; }
+
+input { width: 100%; padding: 10px; margin-top: 10px; 
+}
+
+.container { max-width: 400px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        textarea, select, button { width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #ddd; }
+        button { background-color: #4CAF50; color: #fff; cursor: pointer; border: none; }
+        button:hover { background-color: #45a049; }
+.code-container {
+            background-color: #1e1e1e;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            border-left: 5px solid #4CAF50;
+}
+.output-container {
+            background-color: #222;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            overflow-x: auto;
+            border-left: 5px solid #00c853;
+}
+.output-header {
+            color: #00e676;
+            font-weight: bold;
+            margin-top: 10px;
+}
+        .keyword { color: #569CD6; }
+        .imported { color: #C586C0; }
+        .string { color: #CE9178; }
+        .comment { color: #6A9955; }
+        .number { color: #FF5733; }
+        .highlight { color: #1E90FF; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Large Language Model 101 Learning</h1>
+<head>
+    <title>Large Language Model 101 Learning</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<div class="lab-preamble__details ql-title-medium">
+    <span>
+        <i class="fa-solid fa-flask"></i> Lab
+    </span>
+    <span>
+        <i class="fa-solid fa-clock"></i> 5 hours 30 minutes
+    </span>
+    <span>
+        <i class="fa-solid fa-coins"></i> 5 Credit
+    </span>
+    <span>
+        <i class="fa-solid fa-chart-line"></i> Basic
+    </span>
+</div>
+
+<h2>Introduction to Machine Learning</h2>
+<p>Large Language Models (LLMs) represent a breakthrough in artificial intelligence, employing neural network techniques with extensive parameters for advanced language processing.</p>
+<p>In this lab, you will explores the evolution, architecture, applications, and challenges of LLMs, focusing on their impact in the field of Natural Language Processing (NLP).</p>
+
+<h2>What You Will Learn</h2>
+<ul>
+    <li>What are Large Language Models(LLMs)</li>
+    <li>How do Large Language Models work?</li>
+    <li>Architecture of LLM</li>
+    <li>Popular Large Language Models</li>
+    <li>Applications of Large Language Models</li>
+    <li>What are the Advantages of Large Language Models?</li>
+    <li>Challenges in Training of Large Language Models</li>
+    <li>Hands-on Coding Exercises</li>
+</ul>
+
+<h2>What are Large Language Models(LLMs)</h2>
+<p>A large language model is a type of artificial intelligence algorithm that applies neural network techniques with lots of parameters to process and understand human languages or text using self-supervised learning techniques. Tasks like text generation, machine translation, summary writing, image generation from texts, machine coding, chat-bots, or Conversational AI are applications of the Large Language Model.</p>
+<p>There are many techniques that were tried to perform natural language-related tasks but the LLM is purely based on the deep learning methodologies. LLM (Large language model) models are highly efficient in capturing the complex entity relationships in the text at hand and can generate the text using the semantic and syntactic of that particular language in which we wish to do so.</p>
+<p>If we talk about the size of the advancements in the <b>GPT (Generative Pre-trained Transformer)</b> model only then:</p>
+<ul>
+    <li>GPT-1 which was released in 2018 contains 117 million parameters having 985 million words.</li>
+    <li>GPT-2 which was released in 2019 contains 1.5 billion parameters.</li>
+    <li>GPT-3 which was released in 2020 contains 175 billion parameters. Chat GPT is also based on this model as well.</li>
+    <li>GPT-4 model is released in the early 2023 and it is likely to contain trillions of parameters.</li>
+    <li>GPT-4 Turbo was introduced in late 2023, optimized for speed and cost-efficiency, but its parameter count remains unspecified.</li>
+</ul>
+
+<h2>How do Large Language Models work?</h2>
+<p>Large Language Models (LLMs) operate on the principles of deep learning, leveraging neural network architectures to process and understand human languages.
+These models, are trained on vast datasets using self-supervised learning techniques. The core of their functionality lies in the intricate patterns and relationships they learn from diverse language data during training. LLMs consist of multiple layers, including feedforward layers, embedding layers, and attention layers. They employ attention mechanisms, like self-attention, to weigh the importance of different tokens in a sequence, allowing the model to capture dependencies and relationships.</p>
+
+<h2>Architecture of LLM</h2>
+<p>Large Language Model’s (LLM) architecture is determined by a number of factors, like the objective of the specific model design, the available computational resources, and the kind of language processing tasks that are to be carried out by the LLM. The general architecture of LLM consists of many layers such as the feed forward layers, embedding layers, attention layers. A text which is embedded inside is collaborated together to generate predictions.</p>
+<ul>
+   <p>Important components to influence Large Language Model architecture:</p>
+     <ul>
+        <li>Model Size and Parameter Count</li>
+        <li>Input representations</li>
+        <li>Self-Attention Mechanisms</li>    
+        <li>Training Objectives</li>    
+        <li>Computational Efficiency</li>
+        <li>Decoding and Output Generation</li>
+     </ul>
+   <h3>Transformer-Based LLM Model Architectures</h3>
+   <p><b>Transformer-based models</b>, which have revolutionized natural language processing tasks, typically follow a general architecture that includes the following components:</p>
+   <center><img src="https://media.geeksforgeeks.org/wp-content/uploads/20230531140926/Transformer-python-(1).png" alt="transformer" width="400px"></center>
+   <ul>
+       <li><b>Input Embeddings:</b> The input text is tokenized into smaller units, such as words or sub-words, and each token is embedded into a continuous vector representation. This embedding step captures the semantic and syntactic information of the input.</li>
+       <li><b>Positional Encoding:</b> Positional encoding is added to the input embeddings to provide information about the positions of the tokens because transformers do not naturally encode the order of the tokens. This enables the model to process the tokens while taking their sequential order into account.</li> 
+       <li><b>Encoder:</b> Based on a neural network technique, the encoder analyses the input text and creates a number of hidden states that protect the context and meaning of text data. Multiple encoder layers make up the core of the transformer architecture. Self-attention mechanism and feed-forward neural network are the two fundamental sub-components of each encoder layer.</li>
+       <ul>
+           <p>1. <b>Self-Attention Mechanism:</b> Self-attention enables the model to weigh the importance of different tokens in the input sequence by computing attention scores. It allows the model to consider the dependencies and relationships between different tokens in a context-aware manner.</p>
+           <p>2. <b>Feed-Forward Neural Network:</b> After the self-attention step, a feed-forward neural network is applied to each token independently. This network includes fully connected layers with non-linear activation functions, allowing the model to capture complex interactions between tokens.</p>   
+       </ul>
+       <li><b>Decoder Layers: </b>  In some transformer-based models, a decoder component is included in addition to the encoder. The decoder layers enable autoregressive generation, where the model can generate sequential outputs by attending to the previously generated tokens.</li>
+       <li><b>Multi-Head Attention:</b> Transformers often employ multi-head attention, where self-attention is performed simultaneously with different learned attention weights. This allows the model to capture different types of relationships and attend to various parts of the input sequence simultaneously.</li>
+       <li><b>Layer Normalization:</b> Layer normalization is applied after each sub-component or layer in the transformer architecture. It helps stabilize the learning process and improves the model’s ability to generalize across different inputs.</li>
+       <li><b>Output Layers: </b> The output layers of the transformer model can vary depending on the specific task. For example, in language modeling, a linear projection followed by SoftMax activation is commonly used to generate the probability distribution over the next token.</li>
+    </ul>
+    <p>It’s important to keep in mind that the actual architecture of transformer-based models can change and be enhanced based on particular research and model creations. To fulfill different tasks and objectives, several models like GPT, BERT, and T5 may integrate more components or modifications.</p>
+</ul>
+
+<h2>Popular Large Language Models</h2>
+<p>Now let’s look at some of the famous LLMs which has been developed and are up for inference.</p>
+<ul>
+    <li><b>GPT-3:</b> GPT 3 is developed by OpenAI, stands for Generative Pre-trained Transformer 3. This model powers ChatGPT and is widely recognized for its ability to generate human-like text across a variety of applications.</li>
+    <li><b>BERT:</b> It is created by Google, is commonly used for natural language processing tasks and generating text embeddings, which can also be utilized for training other models.</li>
+    <li><b>RoBERTa:</b> RoBERTa is an advanced version of BERT, stands for Robustly Optimized BERT Pretraining Approach. Developed by Facebook AI Research, it enhances the performance of the transformer architecture.</li>
+    <li><b>BLOOM:</b> It is the first multilingual LLM, designed collaboratively by multiple organizations and researchers. It follows an architecture similar to GPT-3, enabling diverse language-based tasks.</li>
+</ul>
+<p>For implementation details, these models are available on open-source platforms like Hugging Face and OpenAI for Python-based applications.</p>
+
+<h2>Check Your Understanding</h2>
+<form id="quiz-form">
+            
+            <div class="question">
+                <p>1. Which of the following are applications of Large Language Models (LLMs). (Select all that apply).</p>
+                <div class="options">
+                    <label><input type="checkbox" name="q1" value="Text generation"> Text generation</label>
+                    <label><input type="checkbox" name="q1" value="Machine translation"> Machine translation</label>
+                    <label><input type="checkbox" name="q1" value="Image classification"> Image classification</label>
+                    <label><input type="checkbox" name="q1" value="Reinforcement Learning"> Reinforcement Learning</label>
+                    <label><input type="checkbox" name="q1" value="Conversational AI"> Conversational AI</label>
+                </div>
+            </div>
+            
+            <div class="question">
+                <p>2. What are the key components of transformer-based Large Language Models? (Select all that apply).</p>
+                <div class="options">
+                    <label><input type="checkbox" name="q1" value="Input Embeddings"> Input Embeddings</label>
+                    <label><input type="checkbox" name="q1" value="Self-Attention Mechanism"> Self-Attention Mechanism</label>
+                    <label><input type="checkbox" name="q1" value="Recurrent Neural Networks (RNN)"> Recurrent Neural Networks (RNN)</label>
+                    <label><input type="checkbox" name="q1" value="Multi-Head Attention"> Multi-Head Attention</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3. Which of the following Large Language Models have been developed for natural language processing tasks? (Select all that apply).</p>
+                <div class="options">
+                    <label><input type="checkbox" name="q1" value="GPT-3"> GPT-3</label>
+                    <label><input type="checkbox" name="q1" value="BERT"> BERT</label>
+                    <label><input type="checkbox" name="q1" value="RoBERTa"> RoBERTa</label>
+                    <label><input type="checkbox" name="q1" value="ResNet"> ResNet</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>4. What factors influence the architecture of a Large Language Model? (Select all that apply).</p>
+                <div class="options">
+                    <label><input type="checkbox" name="q1" value="Model Size and Parameter Count"> Model Size and Parameter Count</label>
+                    <label><input type="checkbox" name="q1" value="Training Objectives"> Training Objectives</label>
+                    <label><input type="checkbox" name="q1" value="Computational Efficiency"> Computational Efficiency</label>
+                    <label><input type="checkbox" name="q1" value="Number of Hidden Layers in Convolutional Networks"> Number of Hidden Layers in Convolutional Networks</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>5. What improvements were introduced in later versions of GPT models? (Select all that apply).</p>
+                <div class="options">
+                    <label><input type="checkbox" name="q1" value="Increase in parameter count"> Increase in parameter count</label>
+                    <label><input type="checkbox" name="q1" value="Optimizations for speed and cost-efficiency"> Optimizations for speed and cost-efficiency</label>
+                    <label><input type="checkbox" name="q1" value="Shift from self-supervised learning to reinforcement learning"> Shift from self-supervised learning to reinforcement learning</label>
+                    <label><input type="checkbox" name="q1" value="Enhanced attention mechanisms"> Enhanced attention mechanisms</label>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+            <p class="result" id="result"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("quiz-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
+            fetch('/submit_quiz', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json())
+            .then(data => {
+                document.getElementById("result").textContent = data.result;
+            });
+        });
+    </script>
+
+<h2>Applications of Large Language Models</h2>
+<p>LLMs, such as GPT-3, have a wide range of applications across various domains. Few of them are:</p>
+<ul>
+    <li><b>Natural Language Understanding (NLU):</b></li>
+    <ul>
+        <li>Large language models power advanced chatbots capable of engaging in natural conversations.</li>
+        <li>They can be used to create intelligent virtual assistants for tasks like scheduling, reminders, and information retrieval.</li>
+    </ul>
+    <p><b>Example</b></p>
+    <h1>AI Chatbot✨</h1>
+    <div id="chatbox"></div>
+
+    <input type="text" id="userInput" placeholder="Type your message..." />
+    <button id="sendBtn">Send</button>
+
+    <script>
+        document.getElementById("sendBtn").addEventListener("click", async function() {
+            const userInput = document.getElementById("userInput").value.trim();
+            const chatbox = document.getElementById("chatbox");
+
+            if (!userInput) {
+                chatbox.innerHTML += "<p><b>You:</b> (Empty message)</p>";
+                return;
+            }
+
+            // Display user's message
+            chatbox.innerHTML += `<p><b>You:</b> ${userInput}</p>`;
+
+            // Send the message to FastAPI endpoint
+            try {
+                const response = await fetch("/chatbot/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ message: userInput })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                chatbox.innerHTML += `<p><b>Bot:</b> ${data.response}</p>`;
+            } catch (error) {
+                console.error("Error communicating with the server:", error);
+                chatbox.innerHTML += `<p style="color:red;"><b>Bot:</b> Failed to connect to the server.</p>`;
+            }
+
+            // Clear the input field after sending
+            document.getElementById("userInput").value = "";
+            chatbox.scrollTop = chatbox.scrollHeight;
+        });
+    </script>
+    
+        
+
+    <li><b>Content Generation:</b></li>
+    <ul>
+        <li>Creating human-like text for various purposes, including content creation, creative writing, and storytelling.</li>
+        <li>Writing code snippets based on natural language descriptions or commands.</li>
+    </ul>
+    <p><b>Example</b></p>
+    <h1>AI Text Generator ✨</h1>
+    <label for="input_prompt">Enter your prompt:</label>
+    <input type="text" id="input_prompt" placeholder="Once upon a time...">
+
+    <button onclick="generateText()">Generate Text</button>
+
+    <div id="output">Generated text will appear here...</div>
+
+    <script>
+        async function generateText() {
+            const prompt = document.getElementById('input_prompt').value;
+            const outputDiv = document.getElementById('output');
+
+            if (!prompt.trim()) {
+                outputDiv.innerHTML = "<p style='color: red;'>Please enter a prompt.</p>";
+                return;
+            }
+
+            outputDiv.innerHTML = "<p>Generating...</p>";
+
+            try {
+                const response = await fetch('/generate-text', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt: prompt })
+                });
+
+                const data = await response.json();
+                outputDiv.innerHTML = `<p>${data.generated_text}</p>`;
+            } catch (error) {
+                console.error("Error:", error);
+                outputDiv.innerHTML = "<p style='color: red;'>Failed to generate text. Try again.</p>";
+            }
+        }
+    </script>
+
+    <li><b>Language Translation: </b> Large language models can aid in translating text between different languages with improved accuracy and fluency.</li>
+    <p><b>Example</b></p>
+    <div class="container">
+        <h1>AI Language Translator 🌍✨</h1>
+        <textarea id="inputText" placeholder="Type something here..."></textarea>
+
+        <select id="targetLanguage">
+            <option value="fr">French</option>
+            <option value="es">Spanish</option>
+            <option value="de">German</option>
+            <option value="zh-CN">Chinese</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="it">Italian</option>
+        </select>
+
+        <button onclick="translateText()">Translate</button>
+
+        <textarea id="outputText" placeholder="Translated text will appear here..." readonly></textarea>
+    </div>
+
+    <script>
+        async function translateText() {
+            const text = document.getElementById('inputText').value;
+            const targetLang = document.getElementById('targetLanguage').value;
+
+            const response = await fetch('/translate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ text, target_language: targetLang })
+            });
+
+            const result = await response.json();
+            document.getElementById('outputText').value = result.translated_text || "Error: " + result.error;
+        }
+    </script>
+
+    <li><b>Text Summarization: </b> Generating concise summaries of longer texts or articles.</li>
+    <p><b>Example</b></p>
+    <div class="container">
+        <h1>Free AI Text Summarizer ✨</h1>
+        <textarea id="inputText" rows="8" placeholder="Paste your long text here..."></textarea>
+        <button onclick="summarizeText()">Summarize</button>
+        <textarea id="outputSummary" rows="4" readonly placeholder="Your summarized text will appear here..."></textarea>
+    </div>
+
+    <script>
+        async function summarizeText() {
+            const inputText = document.getElementById("inputText").value;
+            const outputSummary = document.getElementById("outputSummary");
+
+            const response = await fetch("http://localhost:8000/summarize", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ text: inputText })
+            });
+
+            const result = await response.json();
+            outputSummary.value = result.summarized_text || "Error generating summary.";
+        }
+    </script>
+
+    <li><b>Sentiment Analysis:</b> Analyzing and understanding sentiments expressed in social media posts, reviews, and comments.</li>
+    <p><b>Example</b></p>
+    <h1>Free AI Sentiment Analyzer 😊😡</h1>
+
+    <textarea id="inputText" placeholder="Type a sentence here..."></textarea>
+<br>
+<button onclick="analyze_sentiment()">Analyze Sentiment</button>
+
+<div id="output"></div>
+
+<script>
+    async function analyze_sentiment() {
+        const text = document.getElementById("inputText").value;
+
+        const response = await fetch("http://127.0.0.1:8000/analyze", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: text })
+        });
+
+        const data = await response.json();
+
+        // Display the sentiment result properly
+        if (response.ok) {
+            document.getElementById("output").innerText = 
+                `Sentiment: ${data.label} (Confidence: ${data.confidence})`;
+        } else {
+            document.getElementById("output").innerText = "Error: " + data.detail;
+        }
+    }
+</script>
+
+
+</ul>
+
+<h2>What are the Advantages of Large Language Models?</h2>
+<p>Large Language Models (LLMs) come with several advantages that contribute to their widespread adoption and success in various applications:</p>
+<ul>
+    <li>LLMs can perform zero-shot learning, meaning they can generalize to tasks for which they were not explicitly trained. This capability allows for adaptability to new applications and scenarios without additional training.</li>
+    <li>LLMs efficiently handle vast amounts of data, making them suitable for tasks that require a deep understanding of extensive text corpora, such as language translation and document summarization.</li>
+    <li>LLMs efficiently handle vast amounts of data, making them suitable for tasks that require a deep understanding of extensive text corpora, such as language translation and document summarization.</li>
+    <li>LLMs enable the automation of various language-related tasks, from code generation to content creation, freeing up human resources for more strategic and complex aspects of a project.</li>
+</ul>
+
+<h2>Challenges in Training of Large Language Models</h2>
+<ul>
+    <li><b>High Costs: </b> Training LLMs requires significant financial investment, with millions of dollars needed for large-scale computational power.</li>
+    <li><b>Time-Intensive: </b> Training takes months, often involving human intervention for fine-tuning to achieve optimal performance.</li>
+    <li><b>Data Challenges:</b> Obtaining large text datasets is difficult, and concerns about the legality of data scraping for commercial purposes have arisen.</li>
+    <li><b>Environmental Impact: </b> Training a single LLM from scratch can produce carbon emissions equivalent to the lifetime emissions of five cars, raising serious environmental concerns.</li>
+</ul>
+
+<h2>Step-by-Step Process of LLm Simulation</h2>
+<p>Below is a step-by-step breakdown of how LLMs work, with simple Python code for each step. We'll go through:</p>
+<ul>
+    <p><b>1. Data Collection and Preprocessing</b></p>
+    <p>Before training an LLM, we need a large dataset of text. Here’s how we load and preprocess text:</p>
+    <p><b>Example</b></p>
+    <div class="code-container">
+        <span style="color:#569CD6;"># Sample dataset: A small text corpus</span><br>
+        <span style="color:#9CDCFE;">dataset</span> = [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#CE9178;">"Artificial Intelligence is transforming the world."</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#CE9178;">"Large Language Models understand and generate text."</span>,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#CE9178;">"Deep learning enables LLMs to capture semantic meaning."</span>,<br>]<br><br>
+
+        <span style="color:#569CD6;"># Preprocessing: Convert text to lowercase</span><br>
+        <span style="color:#076090;">processed_dataset</span> = [sentence.lower() for sentence in dataset]<br><br>
+
+        <span style="color:#DCDCAA;">print</span>(<span style="color:#CE9178;">"Processed Data:"</span>, processed_dataset)
+    </div>
+
+    <div class="output-header">✅ Output:</div>
+    <div class="output-container">
+        Processed Data:<br>
+        [<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;'artificial intelligence is transforming the world.',<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;'large language models understand and generate text.',<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;'deep learning enables llms to capture semantic meaning.'<br>
+        ]
+    </div>
+    
+    <p><b>Tokenization (Splitting Text into Words)</b></p>
+    <p>Tokenization breaks the text into smaller units (tokens). We’ll use the Hugging Face tokenizer for this:</p>
+    <p><b>Example</b></p>
+
+    <div class="code-container">
+        <span class="keyword">from</span> <span class="imported">transformers</span> <span class="keyword">import</span> AutoTokenizer<br><br>
+
+        <span class="comment"># Load a tokenizer (using GPT-2's tokenizer)</span><br>
+        tokenizer = AutoTokenizer.from_pretrained(<span class="string">"gpt2"</span>)<br><br>
+
+        <span class="comment"># Tokenize a sample sentence</span><br>
+        sentence = <span class="string">"LLMs are powerful AI models!"</span><br>
+        tokens = tokenizer.tokenize(sentence)<br><br>
+
+        <span class="keyword">print</span>(<span class="string">"Tokens:"</span>, tokens)
+    </div>
+
+    <div class="output-header">✅ Output:</div>
+    <div class="output-container">
+        Tokens: ['LL', 'Ms', 'are', 'powerful', 'AI', 'models', '!']
+    </div>
+
+    <p><b>Embedding (Converting Tokens into Vectors)</b></p>
+    <p>Transformers convert tokens into numerical representations (embeddings) for processing.</p>
+    <p><b>Example</b></p>
+    <div class="code-container">
+        <span class="keyword">import</span> <span class="imported">torch</span><br><br>
+
+        <span class="comment"># Convert tokens to IDs</span><br>
+        token_ids = tokenizer.encode(sentence, return_tensors=<span class="string">"pt"</span>)<br><br>
+
+        <span class="comment"># Print token IDs</span><br>
+        <span class="keyword">print</span>(<span class="string">"Token IDs:"</span>, token_ids)
+    </div>
+
+    <div class="output-header">✅ Output:</div>
+    <div class="output-container">
+        Token IDs: tensor([[ 2358, 29889,  389,  4655, 11256,  768,    33]])
+    </div>
+
+    <p><b>Training Simulation (Using a Pretrained LLM)</b></p>
+    <p>We simulate training by loading a pre-trained model (GPT-2) and fine-tuning it.</p>
+    <p><b>Example</b></p>
+    <div class="code-container">
+        <span class="keyword">from</span> <span class="imported">transformers</span> <span class="keyword">import</span> AutoModelForCausalLM<br><br>
+
+        <span class="comment"># Load a pre-trained model (GPT-2)</span><br>
+        model = AutoModelForCausalLM.from_pretrained(<span class="string">"gpt2"</span>)<br><br>
+
+        <span class="comment"># Forward pass: Simulating training with tokenized text</span><br>
+        outputs = model(token_ids)<br><br>
+
+        <span class="comment"># Print model's output (hidden states)</span><br>
+        <span class="keyword">print</span>(<span class="string">"Model Output Shape:"</span>, outputs.logits.shape)
+    </div>
+
+    <div class="output-header">✅ Output:</div>
+    <div class="output-container">
+        Model Output Shape: torch.Size([<span class="number">1</span>, <span class="number">7</span>, <span class="number">50257</span>])
+    </div>
+
+    <p><b>Inference (Text Generation)</b></p>
+    <p>After training, LLMs generate text based on input. Let's make GPT-2 generate text:</p>
+    <p><b>Example</b></p>
+    <div class="code-container">
+        <span class="comment"># Generate text from a prompt</span><br>
+        input_text = <span class="string">"The future of AI is"</span><br>
+        input_ids = tokenizer.encode(input_text, return_tensors=<span class="string">"pt"</span>)<br><br>
+
+        <span class="comment"># Generate new text</span><br>
+        output_ids = model.generate(input_ids, max_length=<span class="number">20</span>)<br><br>
+
+        <span class="comment"># Decode generated text</span><br>
+        generated_text = tokenizer.decode(output_ids[<span class="number">0</span>], skip_special_tokens=<span class="keyword">True</span>)<br><br>
+
+        <span class="keyword">print</span>(<span class="string">"Generated Text:"</span>, generated_text)
+    </div>
+
+    <div class="output-header">✅ Example Output:</div>
+    <div class="output-container">
+        <span class="highlight">Generated Text:</span> The future <span class="highlight">of</span> AI <span class="highlight">is</span> incredibly promising <span class="highlight">with</span> rapid advancements.
+    </div>
+</ul>
+
+<h2>Check Your Understanding</h2>
+<form id="quiz-form">
+            
+    <div class="question">
+        <p>1. Which of the following are applications of Large Language Models (LLMs)?. (Select all that apply).</p>
+        <div class="options">
+            <label><input type="checkbox" name="q1" value="Natural Language Understanding (NLU)"> Natural Language Understanding (NLU)</label>
+            <label><input type="checkbox" name="q1" value="Content Generation"> Content Generation</label>
+            <label><input type="checkbox" name="q1" value="Language Translation"> Language Translation</label>
+            <label><input type="checkbox" name="q1" value="Quantum Computing"> Quantum Computing</label>
+        </div>
+    </div>
+    
+    <div class="question">
+        <p>2. What are some advantages of Large Language Models (LLMs)? (Select all that apply).</p>
+        <div class="options">
+            <label><input type="checkbox" name="q1" value="Ability to perform zero-shot learning"> Ability to perform zero-shot learning</label>
+            <label><input type="checkbox" name="q1" value="Efficient handling of vast amounts of data"> Efficient handling of vast amounts of data</label>
+            <label><input type="checkbox" name="q1" value="Automation of language-related tasks"> Automation of language-related tasks</label>
+            <label><input type="checkbox" name="q1" value="Low computational cost"> Low computational cost</label>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>3. What are the challenges in training Large Language Models (LLMs)? (Select all that apply).</p>
+        <div class="options">
+            <label><input type="checkbox" name="q1" value="High financial costs for training"> High financial costs for training</label>
+            <label><input type="checkbox" name="q1" value="Time-intensive training process"> Time-intensive training process</label>
+            <label><input type="checkbox" name="q1" value="Environmental impact due to high energy consumption"> Environmental impact due to high energy consumption</label>
+            <label><input type="checkbox" name="q1" value="LLMs do not require large datasets"> LLMs do not require large datasets</label>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>4. What are the key steps in an LLM simulation? (Select all that apply).</p>
+        <div class="options">
+            <label><input type="checkbox" name="q1" value="Data collection and preprocessing"> Data collection and preprocessing</label>
+            <label><input type="checkbox" name="q1" value="Tokenization and embedding"> Tokenization and embedding</label>
+            <label><input type="checkbox" name="q1" value="Model training and inference"> Model training and inference</label>
+            <label><input type="checkbox" name="q1" value="Physical hardware manufacturing">  Physical hardware manufacturing</label>
+        </div>
+    </div>
+
+    <div class="question">
+        <p>5. In what ways can tokenization be useful in Large Language Models? (Select all that apply).</p>
+        <div class="options">
+            <label><input type="checkbox" name="q1" value="It breaks text into smaller units (tokens) for processing"> It breaks text into smaller units (tokens) for processing</label>
+            <label><input type="checkbox" name="q1" value="It converts words into numerical representations (IDs) for embeddings"> It converts words into numerical representations (IDs) for embeddings</label>
+            <label><input type="checkbox" name="q1" value="It improves model understanding of text by structuring input data">  It improves model understanding of text by structuring input data</label>
+            <label><input type="checkbox" name="q1" value="It directly generates final output text without further processing"> It directly generates final output text without further processing</label>
+        </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit</button>
+    <p class="result" id="result"></p>
+</form>
+</div>
+
+<script>
+document.getElementById("quiz-form2").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const formData = new FormData(this);
+    fetch('/submit_quiz_2', {
+        method: 'POST',
+        body: formData
+    }).then(response => response.json())
+    .then(data => {
+        document.getElementById("result2").textContent = data.result;
+    });
+});
+</script>
+
+<h2>💡 Hands-On Coding Exercise: Working with Large Language Models (LLMs)</h2>
+<p><b>Objectives:</b></p>
+<p>In this exercise, you will:</p>
+<ul>
+    <li>✅ Preprocess a dataset by converting text to lowercase.</li>
+    <li>✅ Tokenize a sentence using a Hugging Face tokenizer.</li>
+    <li>✅ Convert tokens into numerical representations (IDs).</li>
+    <li>✅ Load a pre-trained GPT-2 model and perform text generation.</li>
+</ul>
+<p>To perform the exercise, click the "Open in Colab"</p>
+<script src="https://gist.github.com/JoanVale22/7b07e6ff1c71da85bba7e730990e6ecd.js"></script>
+
+
+<h2>Conclusion</h2>
+<p>Due to the challenges faced in training LLM transfer learning is promoted heavily to get rid of all of the challenges discussed above. LLM has the capability to bring revolution in the AI-powered application but the advancements in this field seem a bit difficult because just increasing the size of the model may increase its performance but after a particular time a saturation in the performance will come and the challenges to handle these models will be bigger than the performance boost achieved by further increasing the size of the models.</p>
+
+</body>
+</html>

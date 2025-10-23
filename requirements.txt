@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+Jinja2
+python-multipart #needed for form data
+spacy
+chatterbot
+chatterbot_corpus
+gradio
+transformers
+torch
